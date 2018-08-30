@@ -1,0 +1,195 @@
+@mixin backgroundsTop($length) {
+  @for $i from 0 through $length {
+    &:nth-child(#{$i+1}) {
+      height: 100vh;
+      top: #{100vh*$i}
+    }
+  }
+}
+
+@mixin transformTop($length) {
+  @for $i from 0 through $length {
+    &:nth-child(#{$i+1}) {
+      transform: translateY(-#{100%*$i});
+    }
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+  height: 100%
+}
+
+.layout {
+  height: 100%;
+  &__content {
+    position: relative;
+    overflow: hidden;
+    padding-top: 100px;
+  }
+  &-backgrounds {
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    position: absolute;
+    &__item {
+      top: 0;
+      left: 0;
+      width: 100%;
+      position: absolute;
+
+      @include backgroundsTop(15);
+
+    }
+  }
+}
+
+.portfolios {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  max-width: 1280px;
+  flex-wrap: wrap;
+
+}
+
+.portfolio-item {
+  position: relative;
+  display: inline-block;
+  background: aqua;
+  width: 598px;
+  height: 896px;
+  left: 0 !important;
+  margin-bottom: 150px;
+  &:nth-child(2n + 1) {
+    z-index: 1;
+  }
+  &__image {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    &-wrapper {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+    }
+  }
+  &__button {
+    margin-top: 80%;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    width: 140px;
+    height: 40px;
+    display: inline-block;
+    color: white;
+    font-weight: normal;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 82px;
+    width: 284px;
+    height: 82px;
+    text-transform: uppercase;
+    font-family: Roboto;
+
+  }
+
+}
+
+.header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  &__line {
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  &__icon {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 300px;
+  }
+}
+
+.layout-menu {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  position: fixed;
+  left: 0;
+  top: 20px;
+  bottom: 0;
+  z-index: 3;
+  width: 80px;
+  padding: 0 10px;
+  &__open {
+    width: 36px;
+    position: relative;
+    height: 36px;
+    margin: 20px auto 50px;
+    &-t {
+      height:1px;
+      display: block;
+      top:0;
+      left:0;
+      width:100%;
+      position: absolute;
+    }
+    &-c {
+      height:1px;
+      display: block;
+      top:17px;
+      left:0;
+      width:100%;
+      position: absolute;
+    }
+    &-b {
+      height:1px;
+      display: block;
+      bottom:0;
+      left:0;
+      width:100%;
+      position: absolute;
+    }
+  }
+  &__icon {
+    flex-basis: 100%;
+    background: white;
+
+
+  }
+  background: white;
+  position: fixed;
+  left: 0;
+  top: 20px;
+  bottom: 0;
+  z-index: 3;
+}
